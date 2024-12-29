@@ -28,7 +28,9 @@ export default class Server {
     }
 
     private setupSwagger(app: Application): void {
-        swaggerDocs(app);
+        if(!process.env.RAILWAY_ENVIRONMENT_NAME)
+            swaggerDocs(app);
+        else return;
     }
 
     private setupErrorHandlers(app: Application): void {
