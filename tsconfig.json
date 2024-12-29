@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      /* Language and Environment */
+      "target": "ES2024",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      /* Modules */
+      "module": "commonjs",
+      "resolveJsonModule": true,
+      /* Emit */
+      "outDir": "./build",
+      /* Interop Constraints */
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      /* Type Checking */
+      "rootDir": "./src",
+      "strict": true,
+      /* Completeness */
+      "skipLibCheck": true,
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+  }
