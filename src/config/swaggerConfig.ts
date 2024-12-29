@@ -10,13 +10,13 @@ const swaggerOptions: SwaggerOptions = {
         },
         servers: [
             {
-                url: process.env.RAILWAY_PUBLIC_DOMAIN 
-                    ? `${process.env.RAILWAY_PUBLIC_DOMAIN}/api/v1` 
-                    : 'http://localhost:3000/api/v1',
-                description: process.env.RAILWAY_PUBLIC_DOMAIN
-                    ? 'Deployed server'
-                    : 'Development server',
+                url: 'http://localhost:3000/api/v1',
+                description: 'Local server',
             },
+            {
+                url: `${process.env.RAILWAY_PUBLIC_DOMAIN}/api/v1`,
+                description: 'Production server',
+            }
         ],
         components: {
             schemas: {
