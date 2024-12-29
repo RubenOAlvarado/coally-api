@@ -8,6 +8,16 @@ const swaggerOptions: SwaggerOptions = {
             version: '1.0.0',
             description: 'A simple task manager API',
         },
+        servers: [
+            {
+                url: process.env.RAILWAY_PUBLIC_DOMAIN 
+                    ? `${process.env.RAILWAY_PUBLIC_DOMAIN}/api/v1` 
+                    : 'http://localhost:3000/api/v1',
+                description: process.env.RAILWAY_PUBLIC_DOMAIN
+                    ? 'Deployed server'
+                    : 'Development server',
+            },
+        ],
         components: {
             schemas: {
                 Task: {
