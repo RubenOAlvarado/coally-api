@@ -4,6 +4,7 @@ export interface ITaskDocument extends Document {
     title: string;
     description: string;
     isCompleted: boolean;
+    createdAt: Date;
 }
 
 const TaskSchema: Schema = new Schema<ITaskDocument>({

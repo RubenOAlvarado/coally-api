@@ -3,9 +3,9 @@ import { Task } from '../entities/Task';
 
 export interface ITaskRepository {
   create(task: CreateTaskDTO): Promise<void>;
-  findById(id: string): Promise<Task | null>;
-  update(id: string, task: Task): Promise<Task>;
+  findById(id: string): Promise<Task>;
+  update(id: string, task: Task): Promise<void>;
   delete(id: string): Promise<void>;
   complete(id: string): Promise<void>;
-  findAll(status?: string): Promise<Task[]>;
+  findAll(completed?: boolean): Promise<Task[]>;
 }

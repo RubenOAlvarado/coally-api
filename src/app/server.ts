@@ -1,8 +1,9 @@
 import express, { Application, NextFunction, Request, Response } from 'express';
 import cors, { CorsOptions } from 'cors';
-import { errorHandlerMiddleware } from './middleware/errorHandler';
+import { errorHandler } from './middleware/errorHandler';
 import swaggerDocs from '../config/swaggerDocs';
 import Routes from './routes';
+import "express-async-errors";
 
 export default class Server {
     constructor(app: Application) {
@@ -37,8 +38,6 @@ export default class Server {
         app.use((req: Request, res: Response, next: NextFunction) => {
             res.status(404).json({ message: 'Route not found' });
         });
-        app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-            errorHandlerMiddleware(err, req, res, next);
-        });
+        app.use(errorHandler);
     }
 }

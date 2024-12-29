@@ -1,15 +1,19 @@
-import { NextFunction, Request, Response } from "express";
-import { HttpError } from "../../shared/errors/HttpError";
+import { NextFunction, Request, Response } from 'express';
+import { CustomError } from '../../shared/errors/CustomError';
 
-export const errorHandlerMiddleware = (
-    error: Error,
-    req: Request,
-    res: Response,
-    next: NextFunction
-) => {
-    if (error instanceof HttpError) {
-        return res.status(error.statusCode).json({ message: error.message });
+export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
+    if(err instanceof CustomError){
+        const { statusCode, errors, logging } = err;
+        if(logging){
+            console.error(JSON.stringify({
+                code: err.statusCode,
+                errors: err.errors,
+                stack: err.stack
+            }, null, 2));
+        }
+        res.status(statusCode).send({ errors });
     }
-    console.error(error);
-    return res.status(500).json({ message: 'An unknown error occurred' });
+
+    console.error(JSON.stringify(err,null,2));
+    res.status(500).json({ message: 'Something went wrong' });
 };
