@@ -45,16 +45,40 @@ $ npm run test:e2e
 ## Documentation
 
 ```bash
-# Swagger (local)
+# Swagger UI
 $ localhost:3000/api-docs
 
 ```
 
-```bash
-# Swagger (production)
-$ 
+## API Endpoints
 
+```bash
+# Create task
+$ POST /api/v1/tasks
+
+# Get all tasks
+$ GET /api/v1/tasks
+
+# Get task by id
+$ GET /api/v1/tasks/:id
+
+# Update task by id
+$ PUT /api/v1/tasks/:id
+
+# Delete task by id
+$ DELETE /api/v1/tasks/:id
+
+# Complete task by id
+$ PATCH /api/v1/tasks/:id/complete
 ```
+
+## Deployed API
+
+```bash
+# Railway
+$ https://coally-api-production.up.railway.app/api/v1/tasks
+```
+
 
 ## Stay in touch
 
